@@ -1,0 +1,122 @@
+{
+  "name": "一般的な商談ヒアリングチェックリスト",
+  "description": "建設業向けシステム導入時の標準的なヒアリング項目",
+  "version": "1.0",
+  "categories": [
+    {
+      "name": "基本情報",
+      "items": [
+        {
+          "id": "basic_001",
+          "question": "会社の従業員数は？",
+          "importance": "high",
+          "keywords": ["従業員", "人数", "規模", "社員", "名"]
+        },
+        {
+          "id": "basic_002",
+          "question": "会社の業務内容・主な工種は？",
+          "importance": "high",
+          "keywords": ["工種", "業務", "事業", "何をやっている", "建設", "土木", "内装"]
+        },
+        {
+          "id": "basic_003",
+          "question": "導入の目的・課題は？",
+          "importance": "high",
+          "keywords": ["目的", "課題", "困っている", "改善", "効率化", "なぜ"]
+        }
+      ]
+    },
+    {
+      "name": "現状の業務フロー",
+      "items": [
+        {
+          "id": "flow_001",
+          "question": "現在の見積書の作成方法は？",
+          "importance": "high",
+          "keywords": ["見積", "Excel", "手書き", "作成", "どうやって"]
+        },
+        {
+          "id": "flow_002",
+          "question": "現在の請求書の管理方法は？",
+          "importance": "medium",
+          "keywords": ["請求", "管理", "どうやって", "発行"]
+        },
+        {
+          "id": "flow_003",
+          "question": "現在の勤怠管理の方法は？",
+          "importance": "medium",
+          "keywords": ["勤怠", "出勤", "タイムカード", "管理", "どうやって"]
+        },
+        {
+          "id": "flow_004",
+          "question": "現在の原価管理の方法は？",
+          "importance": "high",
+          "keywords": ["原価", "コスト", "管理", "把握", "どうやって"]
+        }
+      ]
+    },
+    {
+      "name": "システム要件",
+      "items": [
+        {
+          "id": "sys_001",
+          "question": "利用するユーザー数は？",
+          "importance": "high",
+          "keywords": ["ユーザー", "利用者", "何人", "アカウント"]
+        },
+        {
+          "id": "sys_002",
+          "question": "既存システムとの連携は必要か？",
+          "importance": "medium",
+          "keywords": ["連携", "既存", "システム", "データ移行", "インポート"]
+        },
+        {
+          "id": "sys_003",
+          "question": "スマホ・タブレットでの利用は必要か？",
+          "importance": "medium",
+          "keywords": ["スマホ", "タブレット", "モバイル", "外出先", "現場"]
+        }
+      ]
+    },
+    {
+      "name": "予算・スケジュール",
+      "items": [
+        {
+          "id": "budget_001",
+          "question": "導入予算はどのくらいか？",
+          "importance": "high",
+          "keywords": ["予算", "費用", "コスト", "いくら", "金額"]
+        },
+        {
+          "id": "budget_002",
+          "question": "導入希望時期は？",
+          "importance": "high",
+          "keywords": ["いつ", "時期", "スケジュール", "開始", "導入"]
+        },
+        {
+          "id": "budget_003",
+          "question": "決裁者・決定権者は誰か？",
+          "importance": "high",
+          "keywords": ["決裁", "決定", "誰", "社長", "部長", "承認"]
+        }
+      ]
+    },
+    {
+      "name": "その他",
+      "items": [
+        {
+          "id": "other_001",
+          "question": "競合製品の検討状況は？",
+          "importance": "medium",
+          "keywords": ["他社", "競合", "比較", "検討", "候補"]
+        },
+        {
+          "id": "other_002",
+          "question": "次回のステップ・アクションは？",
+          "importance": "high",
+          "keywords": ["次", "アクション", "ステップ", "いつ", "予定"]
+        }
+      ]
+    }
+  ]
+}

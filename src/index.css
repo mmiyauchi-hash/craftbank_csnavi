@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+:root {
+  /* クラフトバンクオフィス カラーパレット */
+  --cb-primary: #00B900;
+  --cb-primary-hover: #00A000;
+  --cb-primary-light: #E8F5E9;
+  --cb-secondary: #1976D2;
+  --cb-secondary-light: #E3F2FD;
+  --cb-text-primary: #212121;
+  --cb-text-secondary: #757575;
+  --cb-border: #E0E0E0;
+  --cb-bg-main: #F5F5F5;
+  --cb-bg-card: #FFFFFF;
+  --cb-sidebar-bg: #FAFAFA;
+  --cb-sidebar-active: #E8F5E9;
+  --cb-danger: #D32F2F;
+  --cb-warning: #FFA000;
+  --cb-info: #0288D1;
+
+  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  color-scheme: light;
+  color: var(--cb-text-primary);
+  background-color: var(--cb-bg-main);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* クラフトバンクオフィス スタイル */
+.cb-btn-primary {
+  background-color: var(--cb-primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.cb-btn-primary:hover {
+  background-color: var(--cb-primary-hover);
+}
+
+.cb-btn-primary:disabled {
+  background-color: #BDBDBD;
+  cursor: not-allowed;
+}
+
+.cb-btn-secondary {
+  background-color: white;
+  color: var(--cb-text-primary);
+  border: 1px solid var(--cb-border);
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.cb-btn-secondary:hover {
+  background-color: #F5F5F5;
+}
+
+.cb-card {
+  background-color: var(--cb-bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--cb-border);
+  padding: 16px;
+}
+
+.cb-card-header {
+  border-bottom: 1px solid var(--cb-border);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.cb-input {
+  border: 1px solid var(--cb-border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+.cb-input:focus {
+  outline: none;
+  border-color: var(--cb-primary);
+}
+
+.cb-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.cb-badge-success {
+  background-color: var(--cb-primary-light);
+  color: var(--cb-primary);
+}
+
+.cb-badge-warning {
+  background-color: #FFF3E0;
+  color: var(--cb-warning);
+}
+
+.cb-badge-info {
+  background-color: var(--cb-secondary-light);
+  color: var(--cb-secondary);
+}
