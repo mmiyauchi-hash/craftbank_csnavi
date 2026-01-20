@@ -2,7 +2,7 @@
  * 案件一覧ページ
  */
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import type { Project, ProjectStats } from '../types/project';
 import { PROJECT_STATUS_LABELS } from '../types/project';
 import {

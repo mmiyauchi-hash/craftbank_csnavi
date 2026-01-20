@@ -5,7 +5,7 @@ import ChatPanel from '../components/ChatPanel';
 import { useAppStore } from '../store/useAppStore';
 import { getProject } from '../lib/database';
 import type { Project } from '../types/project';
-import { convertToUnifiedChecklist } from '../lib/gitScenario'; // 変換関数が必要かもしれない
+import { CONSTRUCTION_TYPE_LABELS } from '../types/meeting';
 
 function HomePage() {
   const { projectId: paramProjectId } = useParams<{ projectId: string }>();
@@ -18,7 +18,6 @@ function HomePage() {
 
   const { checklist, setChecklist, setMeetingPlan, clearMeetingPlan, meetingPlan } = useAppStore();
   const [project, setProject] = useState<Project | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
 
   // プロジェクトIDがある場合、案件データをロードしてストアにセット
   useEffect(() => {
@@ -29,7 +28,6 @@ function HomePage() {
         return;
       }
 
-      setIsLoading(true);
       try {
         console.log('[HomePage] 案件データを読み込み中...', projectId);
         const projectData = await getProject(projectId);
@@ -73,7 +71,7 @@ function HomePage() {
         setProject(null);
         clearMeetingPlan();
       } finally {
-        setIsLoading(false);
+        // Loading state removed
       }
     };
 
@@ -93,7 +91,11 @@ function HomePage() {
             <div className="text-sm text-gray-500 mb-1">現在録音中の案件</div>
             <h1 className="text-xl font-bold text-gray-800">{project.name}</h1>
             <div className="text-sm text-gray-600 mt-1">
-              {project.meetingVariables?.industry && <span className="mr-3">🏢 {project.meetingVariables.industry}</span>}
+              {project.meetingVariables?.constructionTypes && project.meetingVariables.constructionTypes.length > 0 && (
+                <span className="mr-3">
+                  🏢 {project.meetingVariables.constructionTypes.map(type => CONSTRUCTION_TYPE_LABELS[type]).join('・')}
+                </span>
+              )}
               <span className="bg-green-100 text-green-800 px-2 py-0.5 rounded text-xs">
                 {project.status === 'draft' ? '準備中' : '進行中'}
               </span>
@@ -111,7 +113,7 @@ function HomePage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-[calc(100vh-200px)]">
         {/* 左側：録音パネル */}
         <div className="bg-white rounded-lg shadow-md p-6 overflow-auto">
-          <AudioRecorder projectId={projectId} project={project} />
+          <AudioRecorder projectId={projectId || undefined} project={project} />
 
           {/* 現在のチェックリスト概要 */}
           <div className="mt-6 pt-6 border-t border-gray-200">

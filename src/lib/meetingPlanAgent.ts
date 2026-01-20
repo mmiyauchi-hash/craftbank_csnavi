@@ -157,7 +157,7 @@ function generateChecklist(variables: MeetingVariables): CustomizedChecklistItem
   // 痛みポイントに基づく質問
   variables.painPoints.forEach(painPoint => {
     const painPointQuestions = getPainPointQuestions(painPoint);
-    items.push(...painPointQuestions.map((q, i) => ({
+    items.push(...painPointQuestions.map((q) => ({
       ...q,
       id: `custom_${idCounter++}`,
     })));

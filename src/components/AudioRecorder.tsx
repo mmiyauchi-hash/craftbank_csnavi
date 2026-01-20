@@ -3,7 +3,7 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
 import { analyzeAudioWithGemini, RealtimeSpeechRecognizer, isGeminiAvailable } from '../lib/analyzeTranscript';
 import { classifyError, formatErrorMessage, logError, handleSpeechRecognitionError } from '../lib/errorHandler';
-import { createRecording, getProject, createAnalysis } from '../lib/database';
+import { createRecording, getProject } from '../lib/database';
 import type { Project, Recording } from '../types/project';
 
 interface AudioRecorderProps {
@@ -58,7 +58,7 @@ function AudioRecorder({ projectId: propProjectId, project: propProject }: Audio
   const audioContextRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const animationFrameRef = useRef<number | null>(null);
-  const durationIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const durationIntervalRef = useRef<number | null>(null);
   const recognizerRef = useRef<RealtimeSpeechRecognizer | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [importedAudioBlob, setImportedAudioBlob] = useState<Blob | null>(null);
@@ -305,7 +305,7 @@ function AudioRecorder({ projectId: propProjectId, project: propProject }: Audio
       
       // 音声の長さを取得
       const audio = new Audio(URL.createObjectURL(audioBlob));
-      await new Promise<void>((resolve, reject) => {
+      await new Promise<void>((resolve) => {
         audio.onloadedmetadata = () => {
           setImportedAudioDuration(Math.round(audio.duration));
           resolve();
@@ -413,7 +413,7 @@ function AudioRecorder({ projectId: propProjectId, project: propProject }: Audio
         audioBlob: importedAudioBlob,
         mimeType: importedAudioBlob.type,
         duration: importedAudioDuration,
-        source: 'import',
+        source: 'uploaded',
         transcript: undefined,
       });
 

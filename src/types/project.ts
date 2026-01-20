@@ -130,6 +130,7 @@ export interface UpdateProjectInput {
   meetingVariables?: MeetingVariables;
   meetingPlan?: CustomizedMeetingPlan;
   checklist?: Checklist;
+  recordingIds?: string[];
 }
 
 export interface CreateRecordingInput {

@@ -6,7 +6,7 @@
  * - 分析結果の閲覧
  */
 import { useState, useEffect, useRef } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import type { Project, Recording, AnalysisRecord, ProjectStatus } from '../types/project';
 import { PROJECT_STATUS_LABELS, RECORDING_SOURCE_LABELS } from '../types/project';
 import {
@@ -22,7 +22,6 @@ import { analyzeAudioWithGemini } from '../lib/analyzeTranscript';
 
 function ProjectDetailPage() {
   const { projectId } = useParams<{ projectId: string }>();
-  const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
   
   const { checklist, addMessage, setIsAnalyzing, isAnalyzing } = useAppStore();
@@ -588,7 +587,7 @@ function ProjectDetailPage() {
           {/* チェックリスト */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold mb-4">✅ チェックリスト</h3>
-            {(project.meetingPlan.checklistItems || []).map((item, index) => (
+            {(project.meetingPlan.checklistItems || []).map((item) => (
               <div
                 key={item.id}
                 className={`p-4 rounded-lg border-l-4 ${
@@ -684,7 +683,9 @@ function ProjectDetailPage() {
                         <span className="font-medium text-gray-800">{step.phaseName}</span>
                         <span className="text-xs text-gray-400">約{step.duration}分</span>
                       </div>
-                      <p className="text-sm text-gray-600">{step.goal}</p>
+                      {step.objectives && step.objectives.length > 0 && (
+                        <p className="text-sm text-gray-600">{step.objectives[0]}</p>
+                      )}
                       {step.keyPoints && step.keyPoints.length > 0 && (
                         <ul className="mt-2 space-y-1">
                           {step.keyPoints.map((point, i) => (

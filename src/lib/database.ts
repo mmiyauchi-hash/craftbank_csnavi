@@ -267,7 +267,6 @@ export async function createRecording(input: CreateRecordingInput): Promise<Reco
   const project = await getProject(input.projectId);
   if (project) {
     await updateProject(input.projectId, {
-      ...project,
       recordingIds: [...project.recordingIds, recording.id],
     });
   }

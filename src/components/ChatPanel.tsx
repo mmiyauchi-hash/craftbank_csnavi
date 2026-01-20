@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useAppStore } from '../store/useAppStore';
 import type { AnalysisResult, CustomizedMeetingPlan } from '../types';
-import { CONSTRUCTION_TYPE_LABELS } from '../types/meeting';
 
 function ChatPanel() {
-  const { messages, isAnalyzing, meetingPlan, meetingVariables, checklist } = useAppStore();
+  const { messages, isAnalyzing, meetingPlan, meetingVariables } = useAppStore();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [showPlanDetails, setShowPlanDetails] = useState(true);
 
@@ -270,7 +269,9 @@ function MeetingPlanCard({
                         <span className="font-medium text-gray-800 text-sm">{step.phaseName}</span>
                         <span className="text-xs text-gray-400">約{step.duration}分</span>
                       </div>
-                      <p className="text-xs text-gray-600">{step.goal}</p>
+                      {step.objectives && step.objectives.length > 0 && (
+                        <p className="text-xs text-gray-600">{step.objectives[0]}</p>
+                      )}
                       {step.keyPoints && step.keyPoints.length > 0 && (
                         <ul className="mt-2 space-y-1">
                           {step.keyPoints.map((point, i) => (
